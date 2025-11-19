@@ -10,6 +10,7 @@ namespace adonet_db_videogame
     public class VideogameManager : DbContext
     {
         public DbSet<Videogame> Videogames { get; set; }
+        public DbSet<SoftwareHouse> SoftwareHouses { get; set; }
 
     
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

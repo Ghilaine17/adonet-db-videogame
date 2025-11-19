@@ -158,3 +158,4 @@ C:\Users\aless\Desktop\C#  &  .NET\adonet-db-videogame\adonet-db-videogame\obj\D
 C:\Users\aless\Desktop\C#  &  .NET\adonet-db-videogame\adonet-db-videogame\obj\Debug\net8.0\adonet-db-videogame.pdb
 C:\Users\aless\Desktop\C#  &  .NET\adonet-db-videogame\adonet-db-videogame\obj\Debug\net8.0\adonet-db-videogame.genruntimeconfig.cache
 C:\Users\aless\Desktop\C#  &  .NET\adonet-db-videogame\adonet-db-videogame\obj\Debug\net8.0\ref\adonet-db-videogame.dll
+C:\Users\aless\Desktop\C#  &  .NET\adonet-db-videogame\adonet-db-videogame\obj\Debug\net8.0\adonet-db-videogame.sourcelink.json

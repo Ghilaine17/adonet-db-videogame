@@ -7,14 +7,15 @@ namespace adonet_db_videogame
         static void Main(string[] args)
         {
             int UserChoice= 0;
-            while (UserChoice != 5) {
+            while (UserChoice != 6) {
                 Console.WriteLine("Benvenuto sul sito di GameStop Italia");
                 Console.WriteLine("MENU");
                 Console.WriteLine("[1] Inserisci un nuovo videogioco");
                 Console.WriteLine("[2] Ricerca un videogioco per id");
                 Console.WriteLine("[3] Ricerca videogiochi per nome");
                 Console.WriteLine("[4] Cancella un videogioco");
-                Console.WriteLine("[5] Logout");
+                Console.WriteLine("[5] Aggiungi una software house");
+                Console.WriteLine("[6] Logout");
                 UserChoice = Convert.ToInt32(Console.ReadLine());
                 switch (UserChoice)
                 {
@@ -22,11 +23,15 @@ namespace adonet_db_videogame
                         UserChoice = 0;
                         Console.WriteLine("Inserisci il Titolo");
                         string GameTitle = Console.ReadLine();
-                        Console.WriteLine("Inserisci la Software House");
-                        string GameSH = Console.ReadLine();
+                        Console.WriteLine("Di quale Software House fa parte?");
+                        int SHId= Convert.ToInt32(Console.ReadLine());
                         Videogame videogame = new Videogame();
-                        videogame.AddVideogame(new Videogame() { Software_House = GameSH, Title = GameTitle });
-                        Console.WriteLine("Hai aggiunto un nuovo videogioco!");
+                        videogame.AddVideogame(new Videogame() 
+                            { 
+                                SoftwareHouseId = SHId, 
+                                Title = GameTitle 
+                            }
+                        );
                         break;
                     case 2:
                         UserChoice = 0;
@@ -48,6 +53,16 @@ namespace adonet_db_videogame
                         Console.WriteLine("Inserisci l'id del gioco che vuoi eliminare");
                        int VideogameDel= Convert.ToInt32(Console.ReadLine());
                         Videogame.DeleteVideogame(VideogameDel);
+                        break;
+                    case 5:
+                        UserChoice = 0;
+                        Console.WriteLine("Inserisci la Software House");
+                        string SHName = Console.ReadLine();
+                        SoftwareHouse softwareHouse1= new SoftwareHouse();
+                        softwareHouse1.AddSoftwareHouse(new SoftwareHouse() { Name = SHName });
+                        Console.WriteLine("Hai aggiunto la Software House: " + SHName);
+                        break;
+                    case 6:
                         break;
                 }
             }

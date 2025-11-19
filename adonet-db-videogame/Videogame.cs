@@ -13,7 +13,8 @@ namespace adonet_db_videogame
     {
         [Key] public int Id { get; set; }
         public string Title { get; set; }
-        public string Software_House { get; set; }
+        public SoftwareHouse SoftwareHouse { get; set; }
+        public int SoftwareHouseId { get; set; }
 
         public void AddVideogame(Videogame videogame)
         {
@@ -21,9 +22,18 @@ namespace adonet_db_videogame
             {
                 using VideogameManager db = new VideogameManager();
                 {
-                    db.Add(videogame);
-                    db.SaveChanges();
-                    db.Dispose();
+                    SoftwareHouse softwareHouse = db.SoftwareHouses.FirstOrDefault(sf => sf.Id == videogame.SoftwareHouseId);
+                    if (softwareHouse == null)
+                    {
+                        Console.WriteLine("L'id che hai inserito non porta ad'una Software House");
+                    }
+                    else
+                    {
+                        db.Add(videogame);
+                        db.SaveChanges();
+                        db.Dispose();
+                        Console.WriteLine("Hai aggiunto un nuovo videogioco!");
+                    }
                 }
             }
             catch (Exception ex)
@@ -73,11 +83,8 @@ namespace adonet_db_videogame
                     }
                     else
                     {
-                        Console.WriteLine("Il gioco che hai selezionato è: " + videogame.Title + videogame.Software_House);
+                        Console.WriteLine("Il gioco che hai selezionato è: " + videogame.Title);
                     }
-
-
-
                 }
 
             }
@@ -118,8 +125,8 @@ namespace adonet_db_videogame
             {
                 Console.WriteLine(ex.ToString());
             }
-            
         }
+       
     }
 }
 

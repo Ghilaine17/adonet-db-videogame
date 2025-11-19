@@ -11,8 +11,8 @@ using adonet_db_videogame;
 namespace adonet_db_videogame.Migrations
 {
     [DbContext(typeof(VideogameManager))]
-    [Migration("20251118140506_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251119153531_SoftwareGames")]
+    partial class SoftwareGames
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,23 @@ namespace adonet_db_videogame.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("adonet_db_videogame.SoftwareHouse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SoftwareHouses");
+                });
+
             modelBuilder.Entity("adonet_db_videogame.Videogame", b =>
                 {
                     b.Property<int>("Id")
@@ -32,9 +49,8 @@ namespace adonet_db_videogame.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Software_House")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("SoftwareHouseId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -42,7 +58,20 @@ namespace adonet_db_videogame.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("SoftwareHouseId");
+
                     b.ToTable("Videogames");
+                });
+
+            modelBuilder.Entity("adonet_db_videogame.Videogame", b =>
+                {
+                    b.HasOne("adonet_db_videogame.SoftwareHouse", "SoftwareHouse")
+                        .WithMany()
+                        .HasForeignKey("SoftwareHouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SoftwareHouse");
                 });
 #pragma warning restore 612, 618
         }

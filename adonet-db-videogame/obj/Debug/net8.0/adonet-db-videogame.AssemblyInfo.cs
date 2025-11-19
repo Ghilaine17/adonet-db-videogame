@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("adonet-db-videogame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2da4294f31e4e192f526c406079c2d94adf55f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("adonet-db-videogame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("adonet-db-videogame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
